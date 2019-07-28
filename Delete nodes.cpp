@@ -31,13 +31,23 @@ node *GetNewNode(ll x)
 
 }
 
+node *FindMin(node *root)
+{
+ if(root==NULL)
+    return NULL;
+ else if(root->left==NULL)
+    return root;
+ else
+    FindMin(root->left);
+
+}
 node* Insert(node *root,ll x)
 {
  if(root==NULL)
     root=GetNewNode(x);
- else if(x>root->data)
+  if(x>root->data)
     root->right=Insert(root->right,x);
- else
+  if(x<root->data)
     root->left=Insert(root->left,x);
  return root;
 }
@@ -77,7 +87,7 @@ node *Delete(node *root,ll y)
     // two child
     else
     {
-      node *temp=root->right;
+      node *temp=FindMin(root->right);
       root->data=temp->data;
       root->right=Delete(root->right,temp->data);
       return root;
