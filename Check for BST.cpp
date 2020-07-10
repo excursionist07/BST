@@ -1,44 +1,50 @@
-#include <bits/stdc++.h>
-#define mem(dp,a) memset(dp,a,sizeof(dp))
-#define pb(x) push_back(x)
-#define m_p(x,y) make_pair(x,y)
-#define rep(i,a,b) for(ll i=a;i<b;i++)
-#define repush_back(i,a,b) for(ll i=a;i>=b;i--)
-#define f(n) for(ll i=0;i<n;i++)
-#define r(n) for(ll j=0;j<n;j++)
-#define F first
-#define S second
-#define pi 3.14159265359
-#define hs ios_base::sync_with_stdio(false);cin.tie(NULL);
-using namespace std;
-typedef long long int ll;
-ll HRX=1e18;
-ll INF=1e9+7;
-
-vector<int>vec;
-
-void in1(Node *root)
-{
- if(root==NULL)
-  return;
- in1(root->left);
- vec.push_back(root->data);
- in1(root->right);
-}
-bool isBST(Node* root)
-{
- if(root==NULL)
-  return 1;
- vec.clear();
- in1(root);
- int n=vec.size();
- //int ff=0;
- for(int i=1;i<n;i++)
- {
-  if(vec[i]>vec[i-1])
-   continue;
-  else
-   return 0;
- }
- return 1;
-}
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    /*vector<int>vv;
+    void in(TreeNode* root)
+    {
+     if(!root)
+         return;
+     /*in(root->left);
+     vv.push_back(root->val);
+     in(root->right);
+    }*/
+    bool doit(TreeNode* root,long long int minn,long long int maxx)
+    {
+     if(!root)
+         return true;
+     if(root->val<=minn || root->val>=maxx)
+         return false;
+     if(!doit(root->left,minn,root->val) || !doit(root->right,root->val,maxx))
+         return false;
+     return true;
+    }
+    bool isValidBST(TreeNode* root)
+    {
+     /* vv.clear();
+      if(!root)
+          return 1;
+      in(root);
+      for(int i=1;i<vv.size();i++)
+      {
+       if(vv[i]<=vv[i-1])
+           return 0;
+      }
+      return 1;*/
+      if(!root)
+          return true;
+     
+      return doit(root,-1e18,1e18);
+    }
+};
