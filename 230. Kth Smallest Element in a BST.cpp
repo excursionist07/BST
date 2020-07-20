@@ -12,7 +12,7 @@
 class Solution {
 public:
     int dec,ans;
-    void in(TreeNode* root)
+    void in(TreeNode* root)//O(n) worst case
     {
       if(!root)
           return;
