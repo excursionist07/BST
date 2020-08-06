@@ -64,7 +64,7 @@ ll FindMax(node *root)
 ll FindHeight(node *root)
 {
  if(root==NULL)
-    return -1;
+    return -1; // if counting edges ,if u have to count nodes replace -1 with 0
  else
  {
    ll LH=FindHeight(root->left);
