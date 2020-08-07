@@ -15,7 +15,7 @@ Node * inOrderPredecessor(Node *root, Node *x)
 {
  if(x->left!=NULL)
     return MaxValue(x->left);
- Node *pred=root;
+ Node *pred=NULL;
  while(root!=NULL)
  {
   if(root->data>x->data)
