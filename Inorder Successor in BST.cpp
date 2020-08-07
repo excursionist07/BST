@@ -9,7 +9,7 @@ Node *minValue(Node *root)
  else
    minValue(root->left);
 }
-Node * inOrderSuccessor(Node *root, Node *x)
+Node * inOrderSuccessor(Node *root, Node *x)// O(h) && O(1)
 {
   if(x->right!=NULL)
     return minValue(x->right);
