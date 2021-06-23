@@ -11,7 +11,7 @@ public:
         return FindMin(root->left);
     
     }
-    TreeNode* deleteNode(TreeNode* root, int key) 
+    TreeNode* deleteNode(TreeNode* root, int key)  // [50,30,70,20,40,60,80] --> see level order wise for example
     {
      if(!root)
          return NULL;
